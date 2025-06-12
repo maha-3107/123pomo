@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* === Shared Layout (Already in your CSS) === */
 * {
   margin: 0;
   padding: 0;
@@ -41,75 +41,59 @@ nav ul li a:hover {
   color: #f8b400;
 }
 
-/* Hero Section */
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #f8b400, #ffe082);
-  color: #222;
+
+/* === Page-Specific Styles === */
+
+/* Home Page (optional if using .hero or .features) */
+
+/* Timer Page */
+.timer {
   text-align: center;
+  margin: 60px auto;
+  padding: 40px;
+  max-width: 600px;
+  background: linear-gradient(135deg, #ffeb3b, #fbc02d);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.hero h2 {
-  font-size: 2.5rem;
+.timer h2 {
+  font-size: 2rem;
   margin-bottom: 20px;
 }
 
-.hero p {
+.timer p {
+  font-size: 1.2rem;
+}
+
+/* To-Do List Page */
+.todolist {
+  text-align: center;
+  margin: 60px auto;
+  padding: 40px;
   max-width: 600px;
-  font-size: 1.1rem;
-  margin-bottom: 30px;
+  background: linear-gradient(135deg, #81c784, #aed581);
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.hero button {
-  padding: 12px 30px;
-  background-color: #222;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.todolist h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-.hero button:hover {
-  background-color: #333;
-}
-
-/* Features Section */
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  padding: 60px 40px;
-  background-color: #fff;
-}
-
-.feature {
-  background: #fefefe;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 30px;
+/* Details Page */
+.details {
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin: 60px auto;
+  padding: 40px;
+  max-width: 600px;
+  background: linear-gradient(135deg, #64b5f6, #bbdefb);
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.feature h3 {
-  margin-bottom: 10px;
-  color: #f8b400;
-}
-
-.feature p {
-  font-size: 0.95rem;
-  color: #666;
-}
-
-/* Footer */
-footer {
-  background: #222;
-  color: #f8f8f8;
-  padding: 25px 10px;
-  text-align: center;
-  font-size: 0.9rem;
+.details h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
