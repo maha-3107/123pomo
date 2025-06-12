@@ -21,7 +21,6 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation */
 nav ul {
   display: flex;
   justify-content: center;
@@ -41,59 +40,119 @@ nav ul li a:hover {
   color: #f8b400;
 }
 
-
-/* === Page-Specific Styles === */
-
-/* Home Page (optional if using .hero or .features) */
-
-/* Timer Page */
-.timer {
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8b400, #ffe082);
+  color: #222;
   text-align: center;
-  margin: 60px auto;
-  padding: 40px;
-  max-width: 600px;
-  background: linear-gradient(135deg, #ffeb3b, #fbc02d);
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.timer h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.hero h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
-.timer p {
+.hero p {
+  font-size: 1.1rem;
+}
+
+/* Features Section */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 60px 40px;
+  background-color: #fff;
+}
+
+.feature {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature h3 {
+  color: #f8b400;
+  margin-bottom: 10px;
   font-size: 1.2rem;
 }
 
-/* To-Do List Page */
-.todolist {
+.feature p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: #f8f8f8;
+  padding: 25px 10px;
   text-align: center;
-  margin: 60px auto;
-  padding: 40px;
-  max-width: 600px;
-  background: linear-gradient(135deg, #81c784, #aed581);
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
 }
-
-.todolist h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-/* Details Page */
+/* ----------- Details Page ----------- */
 .details {
+  background-color: #fffde7;
+  padding: 60px 20px;
   text-align: center;
-  margin: 60px auto;
-  padding: 40px;
-  max-width: 600px;
-  background: linear-gradient(135deg, #64b5f6, #bbdefb);
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .details h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  color: #f8b400;
+  margin-bottom: 15px;
+}
+
+.details p {
+  font-size: 1rem;
+  color: #444;
+}
+
+/* ----------- Timer Page ----------- */
+.timer {
+  background-color: #fff3e0;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.timer h2 {
+  font-size: 2rem;
+  color: #f57c00;
+  margin-bottom: 15px;
+}
+
+.timer p {
+  font-size: 1rem;
+  color: #444;
+}
+
+/* ----------- To-Do List Page ----------- */
+.todolist {
+  background-color: #e8f5e9;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.todolist h2 {
+  font-size: 2rem;
+  color: #388e3c;
+  margin-bottom: 15px;
+}
+
+.todolist p {
+  font-size: 1rem;
+  color: #444;
 }
