@@ -120,6 +120,18 @@ footer {
   font-size: 1rem;
   color: #444;
 }
+section {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+ol, ul {
+  margin-left: 2rem;
+  padding-left: 1rem;
+}
 
 /* ----------- Timer Page ----------- */
 .timer {
