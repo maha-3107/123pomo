@@ -1,9 +1,10 @@
-import ToDoList from "@/components/ToDoList";
+import UploadFile from "@/components/UploadFile";
 
-export default function ToDoPage() {
+export default function HomePage() {
   return (
     <main>
-      <ToDoList />
+      <h1>Pomodoro Task Manager</h1>
+      <UploadFile />
     </main>
   );
 }
