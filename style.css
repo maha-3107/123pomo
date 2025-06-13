@@ -143,22 +143,35 @@ footer {
 }
 
 /* ----------- Timer Page ----------- */
-.timer {
-  background-color: #fff3e0;
-  padding: 60px 20px;
+.timer-settings {
+  background: #fff8e1;
+  border: 1px solid #f8b400;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.timer-settings h3 {
   text-align: center;
-}
-
-.timer h2 {
-  font-size: 2rem;
+  margin-bottom: 10px;
   color: #f57c00;
-  margin-bottom: 15px;
 }
 
-.timer p {
-  font-size: 1rem;
-  color: #444;
+.timer-settings label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: #333;
 }
+
+.timer-settings input {
+  width: 60px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
 
 /* ----------- To-Do List Page ----------- */
 .todolist {

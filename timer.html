@@ -19,9 +19,16 @@
     </nav>
   </header>
 
-  <section class="timer">
-    <h2>You have selected Timer page</h2>
-    <p>Stay focused. Stay organized. Crush your goals!</p>
-  </section>
+  <!-- Add this in timer.html above your timer UI -->
+<section class="timer-settings">
+  <h3>Timer Settings</h3>
+  <form id="settings-form">
+    <label>Pomodoro (minutes): <input type="number" id="pomodoroDuration" min="5" value="25" /></label><br/>
+    <label>Short Break (minutes): <input type="number" id="shortBreakDuration" min="1" value="5" /></label><br/>
+    <label>Long Break (minutes): <input type="number" id="longBreakDuration" min="5" value="15" /></label><br/>
+    <button type="submit">Save</button>
+  </form>
+</section>
+
 </body>
 </html>
