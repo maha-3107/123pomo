@@ -3,8 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pomodoro Task Manager</title>
+  <title>Pomodoro Task Manager - To-Do List</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .todolist {
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .todolist h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .todolist input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .todolist button {
+      padding: 10px 15px;
+      margin-left: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .todolist ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .todolist li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .todolist li.completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .todolist li button {
+      background-color: red;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -23,8 +80,41 @@
     <section class="todolist">
       <h2>📝 To-Do List Page</h2>
       <p>Stay focused. Stay organized. Crush your goals!</p>
+
+      <input type="text" id="taskInput" placeholder="Enter your task..." />
+      <button onclick="addTask()">Add</button>
+
+      <ul id="taskList"></ul>
     </section>
   </main>
+
+  <script>
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const taskText = input.value.trim();
+
+      if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.textContent = taskText;
+
+      // Toggle completion
+      li.addEventListener("click", () => {
+        li.classList.toggle("completed");
+      });
+
+      // Delete button
+      const delBtn = document.createElement("button");
+      delBtn.textContent = "Delete";
+      delBtn.onclick = () => li.remove();
+      li.appendChild(delBtn);
+
+      document.getElementById("taskList").appendChild(li);
+      input.value = "";
+    }
+  </script>
 </body>
 </html>
-
