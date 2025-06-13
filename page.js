@@ -1,9 +1,9 @@
-import Timer from "@/components/Timer";
+import ToDoList from "@/components/ToDoList";
 
-export default function TimerPage() {
+export default function ToDoPage() {
   return (
     <main>
-      <Timer />
+      <ToDoList />
     </main>
   );
 }
