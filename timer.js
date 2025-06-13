@@ -1,37 +1,25 @@
+"use client";
 import { useState, useEffect } from "react";
 
 export default function Timer() {
-  const [time, setTime] = useState(25 * 60);
+  const [duration, setDuration] = useState(25 * 60); // default 25 mins
+  const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [quote, setQuote] = useState("");
 
-  const [pomodoro, setPomodoro] = useState(25);
-  const [shortBreak, setShortBreak] = useState(5);
-  const [longBreak, setLongBreak] = useState(15);
-
-  const startTimer = () => {
-    setTime(pomodoro * 60);
-    setIsRunning(true);
+  const formatTime = (seconds) => {
+    const m = String(Math.floor(seconds / 60)).padStart(2, "0");
+    const s = String(seconds % 60).padStart(2, "0");
+    return `${m}:${s}`;
   };
 
+  const startTimer = () => setIsRunning(true);
+  const pauseTimer = () => setIsRunning(false);
   const resetTimer = () => {
-    setTime(pomodoro * 60);
     setIsRunning(false);
+    setTimeLeft(duration);
+    setQuote("");
   };
-
-  useEffect(() => {
-    let timerInterval;
-    if (isRunning && time > 0) {
-      timerInterval = setInterval(() => {
-        setTime((prev) => prev - 1);
-      }, 1000);
-    } else if (time === 0 && isRunning) {
-      clearInterval(timerInterval);
-      setIsRunning(false);
-      fetchQuote();
-    }
-    return () => clearInterval(timerInterval);
-  }, [isRunning, time]);
 
   const fetchQuote = async () => {
     const res = await fetch("/api/quote");
@@ -39,60 +27,46 @@ export default function Timer() {
     setQuote(data.quote);
   };
 
-  const formatTime = (time) => {
-    const minutes = String(Math.floor(time / 60)).padStart(2, "0");
-    const seconds = String(time % 60).padStart(2, "0");
-    return `${minutes}:${seconds}`;
-  };
+  useEffect(() => {
+    let interval;
+    if (isRunning && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    } else if (timeLeft === 0 && isRunning) {
+      fetchQuote();
+      setIsRunning(false);
+    }
+
+    return () => clearInterval(interval);
+  }, [isRunning, timeLeft]);
 
   return (
-    <div className="text-center p-6 bg-orange-50 min-h-screen">
+    <div className="text-center py-10 px-4">
       <h1 className="text-4xl font-bold mb-4">Pomodoro Timer</h1>
-
-      {/* Timer Settings */}
-      <div className="inline-block bg-yellow-100 p-6 rounded shadow-md mb-6 text-left">
-        <h2 className="text-xl font-semibold text-orange-600 mb-4">Timer Settings</h2>
-        <div className="mb-2">
-          <label>Pomodoro (minutes): </label>
-          <input
-            type="number"
-            value={pomodoro}
-            onChange={(e) => setPomodoro(Number(e.target.value))}
-            className="p-1 rounded border ml-2"
-          />
-        </div>
-        <div className="mb-2">
-          <label>Short Break (minutes): </label>
-          <input
-            type="number"
-            value={shortBreak}
-            onChange={(e) => setShortBreak(Number(e.target.value))}
-            className="p-1 rounded border ml-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label>Long Break (minutes): </label>
-          <input
-            type="number"
-            value={longBreak}
-            onChange={(e) => setLongBreak(Number(e.target.value))}
-            className="p-1 rounded border ml-2"
-          />
-        </div>
-      </div>
-
-      {/* Timer Display */}
-      <div className="text-6xl mb-4 font-mono">{formatTime(time)}</div>
-      <div className="flex justify-center gap-4 mb-6">
-        <button onClick={startTimer} className="bg-green-500 px-4 py-2 rounded text-white">Start</button>
-        <button onClick={resetTimer} className="bg-red-500 px-4 py-2 rounded text-white">Reset</button>
+      <div className="text-6xl font-mono mb-4">{formatTime(timeLeft)}</div>
+      <div className="space-x-4">
+        {!isRunning && (
+          <button onClick={startTimer} className="bg-green-600 text-white px-4 py-2 rounded">
+            Start
+          </button>
+        )}
+        {isRunning && (
+          <button onClick={pauseTimer} className="bg-yellow-600 text-white px-4 py-2 rounded">
+            Pause
+          </button>
+        )}
+        <button onClick={resetTimer} className="bg-red-600 text-white px-4 py-2 rounded">
+          Reset
+        </button>
       </div>
 
       {quote && (
-        <div className="mt-6 p-4 bg-yellow-200 text-gray-700 rounded shadow w-fit mx-auto">
-          <p className="italic">"{quote}"</p>
+        <div className="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-gray-700">
+          <p className="italic">“{quote}”</p>
         </div>
       )}
     </div>
   );
 }
+// Note: Ensure you have an API endpoint at /api/quote that returns a JSON object with a "quote" field.
